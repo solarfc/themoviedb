@@ -1,0 +1,40 @@
+.header {
+  padding: 20px 0;
+
+  &__content {
+
+    ul {
+      list-style: none;
+      padding: 0;
+      width: 40%;
+      margin: 0 0 0 auto;
+      display: flex;
+      justify-content: space-between;
+
+      li {
+        position: relative;
+
+        ul {
+          display: block;
+          width: 180px;
+          opacity: 0;
+          transition: all 0.5s ease-in-out;
+          position: absolute;
+          top: 100%;
+          left: 0;
+
+          li {
+            position: static;
+          }
+        }
+
+        &:hover {
+
+          ul {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}
