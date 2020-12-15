@@ -1,38 +1,43 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import {getPopularMovieTC} from "../../reducers/movie-reducer";
-import Pagination from "react-js-pagination";
+import Paginator from "../paginator";
 import Spinner from "../spinner";
 import {NavLink} from "react-router-dom";
+import {getPopularMovieTC} from "../../reducers/popular-movie-reducer";
 
 const MoviePopularList = ({data}) => {
     const content = data.map(item => {
+        const {id, poster_path, original_title, release_date, vote_average} = item;
+        const img = poster_path === null ? `https://lh3.googleusercontent.com/proxy/5LThuqCdMyL3pZ5lmS8b1p93D0Yp8RRurhQ3nq5IlZRV7Uz0LF-YWpnsTxhWEpYbzqqKqnCQur7P-THiXpRmbEMC681ytrwPwnAHaDwWPQcVc2i6mHM1ZY_1mPybNgZfwQ` :  `https://image.tmdb.org/t/p/w500/${poster_path}`
         return (
-            <div key={item.id}>
+            <div className="content__item" key={id} id={id}>
+                <img src={img} alt=""/>
                 <h6>{item.title}</h6>
-                <img src={`https://image.tmdb.org/t/p/w500/${item.backdrop_path}`} alt=""/>
-                <NavLink to={`/popular/${item.id}`}>Подробнее</NavLink>
+                <div className="content__item-block">
+                    <h6>Оригинальное название: <span>{original_title}</span></h6>
+                    <p className="date">Дата премьеры: <span>{release_date}</span></p>
+                    <p className="rating">Рейтинг: <span>{vote_average}</span></p>
+                    <NavLink to="">Подробнее</NavLink>
+                </div>
             </div>
         )
     });
     return (
-        content
+        <div className="content">
+            {content}
+        </div>
     )
 }
 
 class MoviePopularListContainer extends Component {
 
-    handlePageChange(pageNumber) {
-        this.props.getPopularMovieTC(pageNumber);
-    }
 
     componentDidMount() {
         this.props.getPopularMovieTC(1);
     }
 
-
     render() {
-        const {movie: {total_pages, page, data, loading}} = this.props;
+        const {movie: {total_pages, page, data, loading}, getPopularMovieTC} = this.props;
 
         if(loading) {
             return <Spinner />
@@ -40,12 +45,9 @@ class MoviePopularListContainer extends Component {
 
         return (
             <>
-                <Pagination pageRangeDisplayed={10}
-                            activePage={page}
-                            itemsCountPerPage={10}
-                            totalItemsCount={total_pages}
-                            onChange={this.handlePageChange.bind(this)} />
+                <Paginator page={page} total_pages={total_pages} action={getPopularMovieTC}/>
                 <MoviePopularList data={data}/>
+                <Paginator page={page} total_pages={total_pages} action={getPopularMovieTC}/>
             </>
 
         )
@@ -54,7 +56,7 @@ class MoviePopularListContainer extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        movie: state.movie
+        movie: state.popular_movie
     }
 }
 

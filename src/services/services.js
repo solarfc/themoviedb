@@ -7,8 +7,8 @@ const instance = axios.create({
 });
 
 export const movieApi = {
-    getMovieList(movie, page = 1) {
-        return instance.get(`/search/movie/?api_key=${key}&query=${movie}&page=${page}&language=ru-RU`)
+    getMovieList(page = 1, movie) {
+        return instance.get(`search/movie/?api_key=${key}&query=${movie}&page=${page}&language=ru-RU`)
             .then(res => res);
     },
     getPopularMovieList(page = 1) {
@@ -17,6 +17,21 @@ export const movieApi = {
     },
     getTopMovieList(page = 1) {
         return instance.get(`movie/top_rated/?api_key=${key}&page=${page}&language=ru-RU`)
+            .then(res => res);
+    }
+};
+
+export const tvApi = {
+    getTVList(page = 1, tv) {
+        return instance.get(`search/tv/?api_key=${key}&query=${tv}&page=${page}&language=ru-RU`)
+            .then(res => res);
+    },
+    getPopularTVList(page = 1) {
+        return instance.get(`tv/popular/?api_key=${key}&page=${page}&language=ru-RU`)
+            .then(res => res);
+    },
+    getTopTVList(page = 1) {
+        return instance.get(`tv/top_rated/?api_key=${key}&page=${page}&language=ru-RU`)
             .then(res => res);
     }
 };

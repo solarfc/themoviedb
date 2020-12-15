@@ -1,0 +1,13 @@
+ul.pagination {
+  width: 50%;
+  margin: 20px auto;
+  display: flex;
+  justify-content: space-between;
+
+  li {
+
+    &.active {
+      font-weight: bold;
+    }
+  }
+}
