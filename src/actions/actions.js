@@ -41,6 +41,20 @@ export const getTVList = (data) => {
     }
 };
 
+export const getTVPopularList = (data) => {
+    return {
+        type: GET_TV_POPULAR_LIST,
+        payload: data
+    }
+};
+
+export const getTVTopList = (data) => {
+    return {
+        type: GET_TV_TOP_LIST,
+        payload: data
+    }
+}
+
 export const updateState = (state, payload) => {
     const {page, results, total_pages } = payload;
     return {...state, data: results, total_pages: total_pages, page: page}

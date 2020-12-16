@@ -7,12 +7,12 @@ import {getPopularMovieTC} from "../../reducers/popular-movie-reducer";
 
 const MoviePopularList = ({data}) => {
     const content = data.map(item => {
-        const {id, poster_path, original_title, release_date, vote_average} = item;
+        const {id, title, poster_path, original_title, release_date, vote_average} = item;
         const img = poster_path === null ? `https://lh3.googleusercontent.com/proxy/5LThuqCdMyL3pZ5lmS8b1p93D0Yp8RRurhQ3nq5IlZRV7Uz0LF-YWpnsTxhWEpYbzqqKqnCQur7P-THiXpRmbEMC681ytrwPwnAHaDwWPQcVc2i6mHM1ZY_1mPybNgZfwQ` :  `https://image.tmdb.org/t/p/w500/${poster_path}`
         return (
             <div className="content__item" key={id} id={id}>
                 <img src={img} alt=""/>
-                <h6>{item.title}</h6>
+                <h6>{title}</h6>
                 <div className="content__item-block">
                     <h6>Оригинальное название: <span>{original_title}</span></h6>
                     <p className="date">Дата премьеры: <span>{release_date}</span></p>
@@ -49,7 +49,6 @@ class MoviePopularListContainer extends Component {
                 <MoviePopularList data={data}/>
                 <Paginator page={page} total_pages={total_pages} action={getPopularMovieTC}/>
             </>
-
         )
     }
 }

@@ -15,7 +15,6 @@ ReactDOM.render(
                     <App/>
                 </Router>
             </ErrorBoundry>
-
         </Provider>
     </React.StrictMode>,
     document.getElementById('root')

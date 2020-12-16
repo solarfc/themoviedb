@@ -6,6 +6,8 @@ import MoviePopularListContainer from "../movie-popular-item-list";
 import MovieTopItemListContainer from "../movie-top-item-list/movie-top-item-list";
 import MovieListContainer from "../movie-item-list/movie-item-list";
 import TVListContainer from "../tv-item-list/tv-item-list";
+import TVPopularListContainer from "../tv-popular-item-list/tv-popular-item-list";
+import TVTopListContainer from "../tv-top-item-list/tv-top-item-list";
 
 const App = () => {
     return (
@@ -19,8 +21,8 @@ const App = () => {
                         <Route path="/popular-movie" render={() => <MoviePopularListContainer />}></Route>
                         <Route path="/top-movie" render={() => <MovieTopItemListContainer />}></Route>
                         <Route path="/search-tv" render={() => <TVListContainer />}></Route>
-                        <Route path="popular-tv"></Route>
-                        <Route path="top-tv"></Route>
+                        <Route path="/popular-tv" render={() => <TVPopularListContainer />}></Route>
+                        <Route path="/top-tv" render={() => <TVTopListContainer />}></Route>
                     </Switch>
                 </div>
             </main>

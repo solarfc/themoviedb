@@ -3,12 +3,16 @@ import movieReducer from "./movie-reducer";
 import popularMovieReducer from "./popular-movie-reducer";
 import topMovieReducer from "./top-movie-reducer";
 import tvReducer from "./tv-reducer";
+import popularTVReducer from "./popular-tv-reducer";
+import topTVReducer from "./top-tv-reducer";
 
 const reducer = combineReducers({
     movie: movieReducer,
     popular_movie: popularMovieReducer,
     top_movie: topMovieReducer,
-    tv: tvReducer
+    tv: tvReducer,
+    popular_tv: popularTVReducer,
+    top_tv: topTVReducer
 });
 
 export default reducer;
