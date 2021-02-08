@@ -5,11 +5,12 @@ import Spinner from "../spinner";
 import Paginator from "../paginator";
 import Form from "../form";
 import {NavLink} from "react-router-dom";
+import poster from "../../assets/img/unnamed.jpg"
 
 const MovieItemList = ({data}) => {
     const content = data.map(item => {
         const {id, title, poster_path, original_title, release_date, vote_average} = item;
-        const img = poster_path === null ? `https://lh3.googleusercontent.com/proxy/5LThuqCdMyL3pZ5lmS8b1p93D0Yp8RRurhQ3nq5IlZRV7Uz0LF-YWpnsTxhWEpYbzqqKqnCQur7P-THiXpRmbEMC681ytrwPwnAHaDwWPQcVc2i6mHM1ZY_1mPybNgZfwQ` :  `https://image.tmdb.org/t/p/w500/${poster_path}`
+        const img = poster_path === null ? poster :  `https://image.tmdb.org/t/p/w500/${poster_path}`
         return (
             <div className="content__item" key={id}>
                 <img src={img} alt=""/>
@@ -18,7 +19,7 @@ const MovieItemList = ({data}) => {
                     <h6>Оригинальное название: <span>{original_title}</span></h6>
                     <p className="date">Дата премьеры: <span>{release_date}</span></p>
                     <p className="rating">Рейтинг: <span>{vote_average}</span></p>
-                    <NavLink to="">Подробнее</NavLink>
+                    <NavLink to={`/movie/${id}`}>Подробнее</NavLink>
                 </div>
             </div>
         )
@@ -54,7 +55,7 @@ class MovieListContainer extends Component {
 
         return (
             <>
-                <Form action={this.searchMovie} name="фильма"/>
+                <Form action={this.searchMovie} title={title} name="фильма"/>
                 {content}
             </>
         )

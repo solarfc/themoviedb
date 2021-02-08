@@ -5,7 +5,8 @@ const initialState = {
     loading: false,
     data: [],
     total_pages: null,
-    page: 1
+    page: 1,
+    error: false
 };
 
 export const getMovieTC = (page, movie) => async (dispatch) => {
@@ -16,6 +17,8 @@ export const getMovieTC = (page, movie) => async (dispatch) => {
         setTimeout(() => {
             dispatch(toggleIsLoading(false))
         }, 1000);
+    } else {
+        console.log(`error: ${data}`);
     }
 }
 

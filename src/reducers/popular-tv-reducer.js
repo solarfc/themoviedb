@@ -1,4 +1,4 @@
-import {getTVPopularList, toggleIsLoading, updateState} from "../actions/actions";
+import {dispatchState, getTVPopularList, toggleIsLoading, updateState} from "../actions/actions";
 import {tvApi} from "../services/services";
 
 const initialState = {
@@ -8,15 +8,19 @@ const initialState = {
     page: 1
 }
 
+// export const getPopularTVTC = (page) => async (dispatch) => {
+//     dispatch(toggleIsLoading(true));
+//     let data = await tvApi.getPopularTVList(page);
+//     if(data.status === 200) {
+//         dispatch(getTVPopularList(data.data));
+//         setTimeout(() => {
+//             dispatch(toggleIsLoading(false));
+//         }, 1500);
+//     }
+// };
+
 export const getPopularTVTC = (page) => async (dispatch) => {
-    dispatch(toggleIsLoading(true));
-    let data = await tvApi.getPopularTVList(page);
-    if(data.status === 200) {
-        dispatch(getTVPopularList(data.data));
-        setTimeout(() => {
-            dispatch(toggleIsLoading(false));
-        }, 1500);
-    }
+    await dispatchState(page, dispatch, tvApi.getPopularTVList, getTVPopularList);
 };
 
 const popularTVReducer = (state = initialState, action) => {

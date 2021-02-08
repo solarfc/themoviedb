@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig authType="PASSWORD" host="b10.umcrm.pro" id="233030c9-ef9c-41b0-a544-a0c642e51040" port="22" nameFormat="DESCRIPTIVE" username="box10" />
+    </configs>
+  </component>
+</project>

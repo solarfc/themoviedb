@@ -1,0 +1,20 @@
+.detail {
+  padding: 20px 0;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+
+    &-img {
+      width: 35%;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    &-info {
+      width: 62%;
+    }
+  }
+}

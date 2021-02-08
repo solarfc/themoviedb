@@ -6,6 +6,7 @@ import ErrorBoundry from "./component/error-boundry";
 import {BrowserRouter as Router} from "react-router-dom";
 import App from "./component/app";
 import store from "./store";
+import {authApi} from "./services/services";
 
 ReactDOM.render(
     <React.StrictMode>

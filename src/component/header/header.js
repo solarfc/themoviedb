@@ -25,6 +25,9 @@ const Header = () => {
                                 <li><NavLink to="/top-tv">Топ 250</NavLink></li>
                             </ul>
                         </li>
+                        <li>
+                            <NavLink to="/login"></NavLink>
+                        </li>
                     </ul>
                 </div>
             </div>

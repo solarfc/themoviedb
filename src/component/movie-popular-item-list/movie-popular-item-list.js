@@ -17,7 +17,7 @@ const MoviePopularList = ({data}) => {
                     <h6>Оригинальное название: <span>{original_title}</span></h6>
                     <p className="date">Дата премьеры: <span>{release_date}</span></p>
                     <p className="rating">Рейтинг: <span>{vote_average}</span></p>
-                    <NavLink to="">Подробнее</NavLink>
+                    <NavLink to={`/movie/${id}`}>Подробнее</NavLink>
                 </div>
             </div>
         )
